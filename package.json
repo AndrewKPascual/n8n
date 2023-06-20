@@ -10,7 +10,7 @@
   "packageManager": "pnpm@8.6.1",
   "scripts": {
     "preinstall": "node scripts/block-npm-install.js",
-    "build": "turbo run build && mv packages/cli/dist out",
+    "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "dev": "turbo run dev --parallel",
     "clean": "turbo run clean --parallel",
