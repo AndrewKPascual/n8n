@@ -13,8 +13,9 @@ const toast = useToast();
 const message = useMessage();
 const loadingService = useLoadingService();
 
-const versionControlDocsUrl = ref('https://docs.n8n.io/environments/version-control/');
-const versionControlDocsSetupUrl = computed(() => versionControlDocsUrl.value + 'setup/');
+const versionControlDocsSetupUrl = computed(() =>
+	locale.baseText('settings.versionControl.docs.setup.url'),
+);
 const isConnected = ref(false);
 
 const onConnect = async () => {
@@ -116,7 +117,7 @@ const repoUrlValidationRules: Array<Rule | RuleGroup> = [
 	{
 		name: 'MATCH_REGEX',
 		config: {
-			regex: /(?:git|ssh|https?|git@[-\w.]+):(\/\/)?(.*?)(\.git)(\/?|\#[-\d\w._]+?)$/,
+			regex: /^(?!https?:\/\/)(?:git|ssh|git@[-\w.]+):(\/\/)?(.*?)(\.git)(\/?|\#[-\d\w._]+?)$/,
 			message: locale.baseText('settings.versionControl.repoUrlInvalid'),
 		},
 	},
